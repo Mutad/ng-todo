@@ -1,50 +1,50 @@
 import { Injectable } from '@angular/core';
-import { Todo } from '../models/todo';
+import { Task } from '../models/task';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TodoDataService {
+export class TaskDataService {
 
   lastId: number = 0;
 
-  todos: Todo[] = [];
+  todos: Task[] = [];
 
   constructor() { }
 
-  add(todo: Todo) {
-    if (!todo.id) {
-      todo.id = ++this.lastId;
+  add(task: Task) {
+    if (!task.id) {
+      task.id = ++this.lastId;
     }
-    this.todos.push(todo);
+    this.todos.push(task);
   }
 
   delete(id: number) {
-    this.todos = this.todos.filter(todo => todo.id != id);
+    this.todos = this.todos.filter(task => task.id != id);
   }
 
-  update(id:number,values: Object = {}): Todo {
-    let todo = this.getSingle(id);
-    if (!todo) {
+  update(id:number,values: Object = {}): Task {
+    let task = this.getSingle(id);
+    if (!task) {
       return null;
     }
-    Object.assign(todo, values);
-    return todo;
+    Object.assign(task, values);
+    return task;
   }
 
-  getAll():Todo[]{
+  getAll():Task[]{
     return this.todos;
   }
 
-  getSingle(id: number): Todo {
+  getSingle(id: number): Task {
     return this.todos
-      .filter(todo => todo.id === id)
+      .filter(task => task.id === id)
       .pop();
   }
 
-  toggleComplete(todo: Todo):Todo{
-    let updatedTodo = this.update(todo.id, {
-      complete: !todo.complete
+  toggleComplete(task: Task):Task{
+    let updatedTodo = this.update(task.id, {
+      complete: !task.complete
     });
     return updatedTodo;
   }
