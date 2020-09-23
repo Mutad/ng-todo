@@ -1,6 +1,6 @@
 import { Component,Input } from '@angular/core';
-import { Todo } from './models/todo';
-import { TodoDataService } from './services/todo-data.service';
+import { Task } from './models/task';
+import { TaskDataService } from './services/task-data.service';
 
 @Component({
   selector: 'app-root',
@@ -8,28 +8,28 @@ import { TodoDataService } from './services/todo-data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'todo';
+  title = 'task';
 
-  newTodo:Todo = new Todo();
+  newTask:Task = new Task();
 
   constructor(
-    private todoDataService:TodoDataService,
+    private todoDataService:TaskDataService,
   ){}
 
   addTodo() {
-    this.todoDataService.add(this.newTodo);
-    this.newTodo = new Todo();
+    this.todoDataService.add(this.newTask);
+    this.newTask = new Task();
   }
 
-  toggleTodoComplete(todo) {
-    this.todoDataService.toggleComplete(todo);
+  toggleTodoComplete(task) {
+    this.todoDataService.toggleComplete(task);
   }
 
-  removeTodo(todo) {
-    this.todoDataService.delete(todo.id);
+  removeTodo(task) {
+    this.todoDataService.delete(task.id);
   }
 
-  get todos() {
+  get tasks() {
     return this.todoDataService.getAll();
   }
 }
