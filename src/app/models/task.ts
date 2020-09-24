@@ -1,5 +1,6 @@
 export class Task {
     id: number;
+    folderId:number;
     title: string = '';
     description: string = '';
     expireDate: number = Date.now();
