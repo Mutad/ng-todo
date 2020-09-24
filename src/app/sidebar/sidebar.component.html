@@ -1,0 +1,10 @@
+<input class="search" placeholder="Search" [(ngModel)]="searchField" (keyup.enter)="search()">
+<div class="d-flex flex-column flex-grow-1 overflow-auto h-100">
+    <h6>My lists</h6>
+    <div class="list-group-flush">
+        <app-folder-list *ngFor="let folder of this.folders" [folder]="folder"></app-folder-list>
+    </div>
+</div>
+<button class="btn btn-block" (click)="addFolder()">
+    <img src="https://img.icons8.com/ios-glyphs/90/000000/add.png" height="25px" /> Add List
+</button>

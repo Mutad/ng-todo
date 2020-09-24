@@ -1,0 +1,29 @@
+:host{
+    background-color: lightgray;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 20px 0 0;
+    position: relative;
+}
+
+input{
+    background-color: darkgray;
+    margin: 10px;
+    border: 0;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+input::placeholder{
+    color: gray;
+    opacity: 1;
+    font-weight: 300;
+}
+
+button{
+    height: 50px;
+    background-color: lightgray;
+    text-align: left;
+}
