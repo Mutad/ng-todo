@@ -1,5 +1,5 @@
 <section class="todoapp">
-  <header class="header">
+  <!-- <header class="header">
     <h1>Tasks</h1>
     <input class="new-todo" placeholder="What needs to be done?" autofocus="" [(ngModel)]="newTask.title" (keyup.enter)="addTodo()">
   </header>
@@ -16,5 +16,7 @@
   </section>
   <footer class="footer" *ngIf="tasks.length > 0">
     <span class="todo-count"><strong>{{tasks.length}}</strong> {{tasks.length == 1 ? 'item' : 'items'}} left</span>
-  </footer>
+  </footer> -->
+  <app-sidebar></app-sidebar>
+  <router-outlet></router-outlet>
 </section>
