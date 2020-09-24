@@ -1,15 +1,22 @@
 :host{
     display: flex;
-    align-items: baseline;
+    align-items: center;
 }
 
-input{
+:host>input{
     width: fit-content;
-    border-radius: 50%;
-    margin-right: 5px;
+    margin-right: 10px;
 }
 
 p,h6{
     padding: 0;
     margin: 0;
+}
+
+:host img{
+    opacity: 0;
+}
+
+:host:hover img{
+    opacity: 1;
 }

@@ -1,0 +1,6 @@
+<div class="d-flex justify-content-between w-100 my-3 px-3">
+    <h1>Search results for "{{this.searchField}}"</h1>
+</div>
+<div class="list-group-flush overflow-auto h-100" id="taskList">
+    <app-task-list *ngFor='let task of this.tasks' [task]='task' class="list-group-item"></app-task-list>
+</div>

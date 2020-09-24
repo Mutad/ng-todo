@@ -10,31 +10,49 @@ import { TaskDataService } from '../services/task-data.service';
   styleUrls: ['./folder.component.css']
 })
 export class FolderComponent implements OnInit {
-  folder:Folder = null;
+  folder: Folder = null;
 
   constructor(
-    private folderService:FolderDataService,
-    private taskService:TaskDataService,
+    private folderService: FolderDataService,
+    private taskService: TaskDataService,
     private route: ActivatedRoute,
   ) { }
 
+  showCompleted:boolean = false;
+  toggleCompleted() {
+    this.showCompleted = !this.showCompleted;
+  }
+
   ngOnInit(): void {
-    this.route.params.subscribe(params=>{
+    this.route.params.subscribe(params => {
       this.folder = this.folderService.getSingle(+params['id']);
     })
   }
 
-  taskCounter(folderId){
+  taskCounter(folderId) {
     return this.taskService.getByFolderId(folderId).length;
   }
 
-  get tasks(){
-    return this.taskService.getByFolderId(this.folder.id);
+  get tasks() {
+    let arr = this.tasksUncompleted;
+    if (this.showCompleted == true)
+    {
+      arr = arr.concat(this.tasksCompleted);
+    }
+    return arr;
   }
 
-  addTask(){
+  get tasksCompleted() {
+    return this.taskService.getByFolderId(this.folder.id).filter(task => task.complete == true);
+  }
+
+  get tasksUncompleted() {
+    return this.taskService.getByFolderId(this.folder.id).filter(task => task.complete == false);
+  }
+
+  addTask() {
     let newTask = new Task({
-      title:"New task",
+      title: "New task",
       folderId: this.folder.id
     });
     this.taskService.add(newTask);

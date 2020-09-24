@@ -8,19 +8,33 @@ export class TaskDataService {
 
   lastId: number = 0;
 
-  todos: Task[] = [];
+  tasks: Task[] = [];
 
-  constructor() { }
+  foundTasks: Task[] = [];
+
+  constructor() {
+    let tsk = new Task({
+      title:'Hello world',
+      folderId:1
+    });
+
+    let tsk2 = {...tsk};
+    tsk2.description = "Lorem ipsum dolor sit amen";
+    this.add(tsk2);
+    
+    this.add({...tsk});
+    
+  }
 
   add(task: Task) {
     if (!task.id) {
       task.id = ++this.lastId;
     }
-    this.todos.push(task);
+    this.tasks.push(task);
   }
 
   delete(id: number) {
-    this.todos = this.todos.filter(task => task.id != id);
+    this.tasks = this.tasks.filter(task => task.id != id);
   }
 
   update(id:number,values: Object = {}): Task {
@@ -33,19 +47,23 @@ export class TaskDataService {
   }
 
   getAll():Task[]{
-    return this.todos;
+    return this.tasks;
   }
 
   getSingle(id: number): Task {
-    return this.todos
+    return this.tasks
       .filter(task => task.id === id)
       .pop();
   }
 
   toggleComplete(task: Task):Task{
-    let updatedTodo = this.update(task.id, {
+    let updatedTask = this.update(task.id, {
       complete: !task.complete
     });
-    return updatedTodo;
+    return updatedTask;
+  }
+
+  getByFolderId(folderId:number){
+    return this.tasks.filter(task=>task.folderId == folderId);
   }
 }

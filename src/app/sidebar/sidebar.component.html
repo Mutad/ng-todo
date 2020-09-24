@@ -1,4 +1,12 @@
 <input class="search" placeholder="Search" [(ngModel)]="searchField" (keyup.enter)="search()">
+<div class="row justify-content-around my-3">
+    <a routerLink="/all" routerLinkActive="active" class="col-4 btn btn-secondary">All</a>
+    <a routerLink="/tagged" routerLinkActive="active" class="col-4 btn btn-secondary">Tagged</a>
+</div>
+<div class="row justify-content-around mb-3">
+    <a routerLink="/today" routerLinkActive="active" class="col-4 btn btn-secondary">Today</a>
+    <a routerLink="/scheduled" routerLinkActive="active" class="col-4 btn btn-secondary">Scheduled</a>
+</div>
 <div class="d-flex flex-column flex-grow-1 overflow-auto h-100">
     <h6>My lists</h6>
     <div class="list-group-flush">

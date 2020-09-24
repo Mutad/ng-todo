@@ -1,11 +1,13 @@
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
+
 export class Task {
     id: number;
-    folderId:number;
+    folderId: number;
     title: string = '';
     description: string = '';
-    expireDate: number = Date.now();
-    tags: string[] = [];
-    priority:number = 0;
+    expireDate: NgbDate = null;
+    tags: any[] = [];
+    priority: number = 0;
     complete: boolean = false;
 
     constructor(values: Object = {}) {

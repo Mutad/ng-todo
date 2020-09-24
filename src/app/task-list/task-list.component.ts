@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Task } from '../models/task';
 
 @Component({
@@ -11,7 +12,9 @@ export class TaskListComponent implements OnInit {
   @Input()
   task:Task = null;
 
-  constructor() { }
+  constructor(
+    private modalService:NgbModal
+  ) { }
 
   ngOnInit(): void {
   }
@@ -32,4 +35,14 @@ export class TaskListComponent implements OnInit {
     }
   }
 
+  openModal(content){
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      console.log(`Closed with: ${result}`);
+    console.log(this.task)
+
+    }, (reason) => {
+      console.log(`Dismissed`);
+    });
+
+  }
 }

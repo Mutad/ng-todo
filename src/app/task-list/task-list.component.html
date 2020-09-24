@@ -1,7 +1,46 @@
-<input type="checkbox">
-<span class="d-flex flex-column">
+<input type="checkbox" [(ngModel)]="this.task.complete">
+<span class="d-flex flex-column flex-grow-1">
     <h6 contenteditable [textContent]="this.task.title" (keydown)="editTitle($event)"></h6>
-    <p *ngIf="task.description" contenteditable [textContent]="this.task.description" (keydown)="editDescription($event)">
+    <p *ngIf="task.description" contenteditable [textContent]="this.task.description"
+        (keydown)="editDescription($event)">
         {{task.description}}
     </p>
+    <div>
+        <span class="badge badge-primary mx-1" *ngFor="let tag of task.tags">{{tag.display}}</span>
+    </div>
+    <div>
+        <span class="badge badge-warning"
+            *ngIf="this.task.expireDate">{{this.task.expireDate.day}}.{{this.task.expireDate.month}}.{{this.task.expireDate.year}}</span>
+    </div>
 </span>
+<button class="btn p-0" (click)="openModal(content)"><img height="20px"
+        src="https://img.icons8.com/ios/50/000000/info.png" /></button>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <div>
+            <h4 class="modal-title" id="modal-basic-title" contenteditable (keydown)="editTitle($event)">
+                {{this.task.title}}</h4>
+            <p class="modal-description" contenteditable (keydown)="editDescription($event)">
+                {{this.task.description===""?"Description":this.task.description}}</p>
+        </div>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="d-flex flex-column">
+            <ngb-datepicker #d [(ngModel)]="this.task.expireDate"></ngb-datepicker>
+            Priority:
+            <select class="custom-select" [(ngModel)]="this.task.priority">
+                <option value="1">Low</option>
+                <option value="2">Medium</option>
+                <option value="3">High</option>
+            </select>
+            <tag-input [(ngModel)]='this.task.tags'></tag-input>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+</ng-template>
