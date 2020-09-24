@@ -1,0 +1,22 @@
+:host{
+    margin: 0;
+    padding: 0;
+}
+
+.list-name{
+    max-width: 75%;
+
+    overflow: hidden;
+    height: 1.2em; 
+    white-space: nowrap;
+}
+
+.list-group-item{
+    background-color: transparent;
+    color: black;
+}
+
+.list-group-item.active{
+    background-color: #007bff;
+    color: white;
+}

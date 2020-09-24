@@ -1,0 +1,6 @@
+<a [routerLink]="['/folder/',folder.id]"
+    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+    routerLinkActive="active">
+    <span class="list-name" contenteditable [textContent]="this.folder.title" (keydown)="renameFolder($event)"></span>
+    <span class="badge badge-primary badge-pill">{{this.taskCounter(folder.id)}}</span>
+</a>
