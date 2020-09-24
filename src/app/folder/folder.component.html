@@ -1,0 +1,10 @@
+<div class="d-flex justify-content-between w-100 my-3 px-3">
+    <h1>{{this.folder.title}}</h1>
+    <h1>{{this.taskCounter(this.folder.id)}}</h1>
+</div>
+<div class="list-group-flush overflow-auto h-100">
+    <app-task-list *ngFor='let task of this.tasks' [task]='task' class="list-group-item"></app-task-list>
+</div>
+<button class="btn btn-block" (click)="addTask()">
+    <img src="https://img.icons8.com/ios-glyphs/90/000000/add.png" height="25px" /> Add Task
+</button>
