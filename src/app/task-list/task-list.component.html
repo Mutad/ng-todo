@@ -1,0 +1,7 @@
+<input type="checkbox">
+<span class="d-flex flex-column">
+    <h6 contenteditable [textContent]="this.task.title" (keydown)="editTitle($event)"></h6>
+    <p *ngIf="task.description" contenteditable [textContent]="this.task.description" (keydown)="editDescription($event)">
+        {{task.description}}
+    </p>
+</span>

@@ -1,0 +1,15 @@
+:host{
+    display: flex;
+    align-items: baseline;
+}
+
+input{
+    width: fit-content;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+p,h6{
+    padding: 0;
+    margin: 0;
+}
