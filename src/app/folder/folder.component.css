@@ -9,3 +9,7 @@ button{
     height: 50px;
     text-align: left;
 }
+
+#taskList{
+    scroll-behavior: smooth;
+}

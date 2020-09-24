@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Folder } from '../models/folder';
+import { Task } from '../models/task';
 import { FolderDataService } from '../services/folder-data.service';
 import { TaskDataService } from '../services/task-data.service';
 
@@ -32,6 +33,14 @@ export class FolderComponent implements OnInit {
   }
 
   addTask(){
-    
+    let newTask = new Task({
+      title:"New task",
+      folderId: this.folder.id
+    });
+    this.taskService.add(newTask);
+    let el = document.querySelector('app-task-list:last-child');
+    setTimeout(() => {
+      el.scrollIntoView();
+    }, 10);
   }
 }

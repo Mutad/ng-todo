@@ -2,7 +2,7 @@
     <h1>{{this.folder.title}}</h1>
     <h1>{{this.taskCounter(this.folder.id)}}</h1>
 </div>
-<div class="list-group-flush overflow-auto h-100">
+<div class="list-group-flush overflow-auto h-100" id="taskList">
     <app-task-list *ngFor='let task of this.tasks' [task]='task' class="list-group-item"></app-task-list>
 </div>
 <button class="btn btn-block" (click)="addTask()">
